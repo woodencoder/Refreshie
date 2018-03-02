@@ -56,7 +56,7 @@
 		0431F30620495E66003E092B /* Refreshie */ = {
 			isa = PBXGroup;
 			children = (
-				0431F31B20495E91003E092B /* Sources */,
+				0431F31B20495E91003E092B /* Source */,
 				0431F30720495E66003E092B /* AppDelegate.swift */,
 				0431F30920495E66003E092B /* ViewController.swift */,
 				0431F30B20495E66003E092B /* Main.storyboard */,
@@ -67,12 +67,12 @@
 			path = Refreshie;
 			sourceTree = "<group>";
 		};
-		0431F31B20495E91003E092B /* Sources */ = {
+		0431F31B20495E91003E092B /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				0431F31920495E6F003E092B /* Refreshie.swift */,
 			);
-			path = Sources;
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
