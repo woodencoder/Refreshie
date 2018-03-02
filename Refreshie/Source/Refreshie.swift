@@ -178,8 +178,10 @@ public class Refreshie: UIView {
     public func endRefreshing() {
         isRefreshing = false
         
-        constraintToParent?.constant = -bounds.height
+        stopRotating()
         animateCircle(to: 0.0)
+        
+        constraintToParent?.constant = -bounds.height
         UIView.animate(withDuration: hideAnimationDuration,
                        delay: 0,
                        usingSpringWithDamping: 0.7,
