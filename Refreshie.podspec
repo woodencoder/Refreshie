@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Refreshie'
-  s.version          = '0.1.0'
+  s.version          = '0.2.0'
   s.summary          = 'Android-like refresh indicator for iOS'
  
   s.description      = <<-DESC
