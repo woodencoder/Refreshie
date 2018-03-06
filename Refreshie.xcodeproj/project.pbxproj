@@ -13,6 +13,7 @@
 		0431F30F20495E66003E092B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0431F30E20495E66003E092B /* Assets.xcassets */; };
 		0431F31220495E66003E092B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0431F31020495E66003E092B /* LaunchScreen.storyboard */; };
 		0431F31A20495E6F003E092B /* Refreshie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0431F31920495E6F003E092B /* Refreshie.swift */; };
+		04BCBC01204E82B70057121B /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BCBC00204E82B70057121B /* UIColor+Additions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		0431F31120495E66003E092B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0431F31320495E66003E092B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0431F31920495E6F003E092B /* Refreshie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refreshie.swift; sourceTree = "<group>"; };
+		04BCBC00204E82B70057121B /* UIColor+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,7 +42,8 @@
 		0431F2FB20495E66003E092B = {
 			isa = PBXGroup;
 			children = (
-				0431F30620495E66003E092B /* Refreshie */,
+				0431F31B20495E91003E092B /* Source */,
+				0431F30620495E66003E092B /* Example */,
 				0431F30520495E66003E092B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,10 +56,9 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0431F30620495E66003E092B /* Refreshie */ = {
+		0431F30620495E66003E092B /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				0431F31B20495E91003E092B /* Source */,
 				0431F30720495E66003E092B /* AppDelegate.swift */,
 				0431F30920495E66003E092B /* ViewController.swift */,
 				0431F30B20495E66003E092B /* Main.storyboard */,
@@ -64,13 +66,14 @@
 				0431F31020495E66003E092B /* LaunchScreen.storyboard */,
 				0431F31320495E66003E092B /* Info.plist */,
 			);
-			path = Refreshie;
+			path = Example;
 			sourceTree = "<group>";
 		};
 		0431F31B20495E91003E092B /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				0431F31920495E6F003E092B /* Refreshie.swift */,
+				04BCBC00204E82B70057121B /* UIColor+Additions.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0431F30A20495E66003E092B /* ViewController.swift in Sources */,
+				04BCBC01204E82B70057121B /* UIColor+Additions.swift in Sources */,
 				0431F30820495E66003E092B /* AppDelegate.swift in Sources */,
 				0431F31A20495E6F003E092B /* Refreshie.swift in Sources */,
 			);

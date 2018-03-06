@@ -17,8 +17,8 @@ extension UIView {
 public class Refreshie: UIView {
     
     public var radius: CGFloat = 15
-    public var fillColor: UIColor = .red
-    public var innerCircleColor: UIColor = .blue
+    public var fillColor: UIColor = UIColor.bma_color(rgb: 0xF9F9F9)
+    public var innerCircleColor: UIColor = UIColor.bma_color(rgb: 0x397AF2)
     public var circleWidth: CGFloat = 2.0
     public var requiredDraggingOffset: CGFloat = 100.0
     public var hideAnimationDuration: TimeInterval = 1.0
@@ -61,9 +61,7 @@ public class Refreshie: UIView {
         createSizeConstraints()
         createConstraints(to: view)
         
-        
         setupPanRecognizer(for: view)
-        
         
         setupCircleLayer()
     }
