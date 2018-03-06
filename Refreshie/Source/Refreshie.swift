@@ -23,19 +23,25 @@ public class Refreshie: UIView {
     public var requiredDraggingOffset: CGFloat = 100.0
     public var hideAnimationDuration: TimeInterval = 1.0
     
+    public private(set) var isRefreshing: Bool = false
+    
     public var onRefreshAction: (() -> Void)?
     
     private var constraintToParent: NSLayoutConstraint?
     private var circleLayer: CAShapeLayer = CAShapeLayer()
+    
     private var counterForceCoefficent: CGFloat = 1.0
-    private var springDumping: CGFloat = 0.5
-    private var springVelocity: CGFloat = 0.5
+    private var counterForceIncrement: CGFloat = 1.5
+    
+    private var bounceAnimationSpringDumping: CGFloat = 0.5
+    private var bounceAnimationSpringVelocity: CGFloat = 0.5
     private var bounceAnimationDuration: TimeInterval = 0.7
     
+    private var hideAnimationSpingDumping: CGFloat = 0.7
+    private var hideAnimationSpringVelocity: CGFloat = 0.0
     
-    public private(set) var isRefreshing: Bool = false
-    
-    
+    // MARK: - Public methods
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -61,6 +67,34 @@ public class Refreshie: UIView {
         
         setupCircleLayer()
     }
+    
+    public func endRefreshing() {
+        isRefreshing = false
+        
+        stopRotating()
+        animateCircle(to: 0.0)
+        
+        constraintToParent?.constant = -bounds.height
+        UIView.animate(withDuration: hideAnimationDuration,
+                       delay: 0,
+                       usingSpringWithDamping: 0.7,
+                       initialSpringVelocity: 0.0,
+                       options: [],
+                       animations: {
+                        self.superview?.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
+    public func beginRefreshing() {
+        isRefreshing = true
+        
+        onRefreshAction?()
+        
+        circleLayer.strokeEnd = 0.5
+        startRotating()
+    }
+    
+    // MARK: - Private methods
     
     private func setupBasicAppearance() {
         self.backgroundColor = fillColor
@@ -146,12 +180,12 @@ public class Refreshie: UIView {
             let deltaTranslation = translation.y - constraintToParent.constant
             
             if translation.y > requiredDraggingOffset {
-                self.counterForceCoefficent += 1.5
+                self.counterForceCoefficent += counterForceIncrement
             } else {
-                if counterForceCoefficent - 1.5 <= 1.0 {
+                if counterForceCoefficent - counterForceIncrement <= 1.0 {
                     self.counterForceCoefficent = 1.0
                 } else {
-                    self.counterForceCoefficent -= 1.5
+                    self.counterForceCoefficent -= counterForceIncrement
                 }
                 
             }
@@ -175,31 +209,7 @@ public class Refreshie: UIView {
         }
     }
     
-    public func endRefreshing() {
-        isRefreshing = false
-        
-        stopRotating()
-        animateCircle(to: 0.0)
-        
-        constraintToParent?.constant = -bounds.height
-        UIView.animate(withDuration: hideAnimationDuration,
-                       delay: 0,
-                       usingSpringWithDamping: 0.7,
-                       initialSpringVelocity: 0.0,
-                       options: [],
-                       animations: {
-                        self.superview?.layoutIfNeeded()
-        }, completion: nil)
-    }
     
-    public func beginRefreshing() {
-        isRefreshing = true
-        
-        onRefreshAction?()
-        
-        circleLayer.strokeEnd = 0.5
-        startRotating()
-    }
     
     private func animateCircle(to progress: CGFloat) {
         let animation = CABasicAnimation(keyPath: "strokeEnd")
@@ -220,8 +230,8 @@ public class Refreshie: UIView {
         constraintToParent?.constant = offset
         UIView.animate(withDuration: bounceAnimationDuration,
                        delay: 0.0,
-                       usingSpringWithDamping: springDumping,
-                       initialSpringVelocity: springVelocity,
+                       usingSpringWithDamping: bounceAnimationSpringDumping,
+                       initialSpringVelocity: bounceAnimationSpringVelocity,
                        options: [],
                        animations: {
                         self.superview?.layoutIfNeeded()
